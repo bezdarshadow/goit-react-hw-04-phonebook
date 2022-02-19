@@ -1,0 +1,19 @@
+.input{
+    display: inline-block;
+    background-color: transparent;
+    height: 25px;
+    max-width: 150px;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: 0.03em;
+    padding: 5px 10px;
+    color: black;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-bottom: 10px;;
+}
+.label{
+    font-size: 20px;
+    color: rgb(43, 132, 216);
+    margin-bottom: 20px;
+}
