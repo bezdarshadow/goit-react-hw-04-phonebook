@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 
@@ -22,19 +22,11 @@ const ContactForm = ({ onChange }) => {
     });
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = useCallback(event => {
     event.preventDefault();
-    const { name, number } = contact;
-
-    const newContact = {
-      name,
-      number,
-    };
-
-    onChange(newContact);
-
+    onChange(contact);
     resetForm();
-  };
+  }, [contact, onChange]);
 
   const resetForm = () => {
     setContact(initialState);

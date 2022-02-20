@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { nanoid } from 'nanoid';
 
 import ContactFilter from './ContactFilter';
@@ -44,7 +44,6 @@ const Phonebook = () => {
     }
 
     setContacts(state => [...state, newCont])
-
   };
   const deleteContact = contactId => {
     setContacts(state => state.filter(contact => contact.id !== contactId));
@@ -53,11 +52,11 @@ const Phonebook = () => {
     const { value } = event.target;
     setFilter(value)
   };
-  const filteredContacts = () => {
+  const filteredContacts = useMemo(() => {
     const normalizeFilter = filter.toLowerCase();
     const contactsList = contacts.filter(contact => contact.name.toLowerCase().includes(normalizeFilter))
     return contactsList;
-  };
+  }, [filter, contacts]);
 
   return (
     <div className={styles.section}>
@@ -65,7 +64,7 @@ const Phonebook = () => {
       <ContactForm onChange={addContact} />
       <h2 className={styles.title}>Contacts</h2>
       <ContactFilter value={filter} onChange={changeFilter} />
-      <ContactList contacts={filteredContacts()} onDelete={deleteContact} />
+      <ContactList contacts={filteredContacts} onDelete={deleteContact} />
     </div>
   );
 };
