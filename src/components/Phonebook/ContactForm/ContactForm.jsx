@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, memo } from 'react';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 
@@ -22,11 +22,11 @@ const ContactForm = ({ onChange }) => {
     });
   };
 
-  const handleSubmit = useCallback(event => {
+  const handleSubmit = event => {
     event.preventDefault();
     onChange(contact);
     resetForm();
-  }, [contact, onChange]);
+  };
 
   const resetForm = () => {
     setContact(initialState);
@@ -76,7 +76,7 @@ const ContactForm = ({ onChange }) => {
 };
 
 
-export default ContactForm;
+export default memo(ContactForm);
 
 ContactForm.propTypes = {
   onChange: PropTypes.func.isRequired,
