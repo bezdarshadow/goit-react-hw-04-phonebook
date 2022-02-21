@@ -64,7 +64,7 @@ const Phonebook = () => {
       <ContactForm onChange={addContact} />
       <h2 className={styles.title}>Contacts</h2>
       <ContactFilter value={filter} onChange={changeFilter} />
-      <ContactList contacts={filteredContacts} onDelete={deleteContact} />
+      <ContactList contacts={filteredContacts()} onDelete={deleteContact} />
     </div>
   );
 };
