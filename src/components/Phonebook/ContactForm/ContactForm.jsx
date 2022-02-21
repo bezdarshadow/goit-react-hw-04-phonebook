@@ -1,4 +1,4 @@
-import { useState, useRef, memo } from 'react';
+import { useState, useRef } from 'react';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 
@@ -76,7 +76,7 @@ const ContactForm = ({ onChange }) => {
 };
 
 
-export default memo(ContactForm);
+export default ContactForm;
 
 ContactForm.propTypes = {
   onChange: PropTypes.func.isRequired,

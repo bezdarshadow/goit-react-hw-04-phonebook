@@ -1,4 +1,4 @@
-import { useRef, memo } from 'react';
+import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 
@@ -13,7 +13,7 @@ const ContactFilter = ({ value, onChange }) => {
   );
 };
 
-export default memo(ContactFilter);
+export default ContactFilter;
 
 ContactFilter.propTypes = {
   value: PropTypes.string.isRequired,

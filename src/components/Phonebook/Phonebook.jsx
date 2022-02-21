@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef} from 'react';
 import { nanoid } from 'nanoid';
 
 import ContactFilter from './ContactFilter';
@@ -52,11 +52,11 @@ const Phonebook = () => {
     const { value } = event.target;
     setFilter(value)
   };
-  const filteredContacts = useMemo(() => {
+  const filteredContacts = () => {
     const normalizeFilter = filter.toLowerCase();
     const contactsList = contacts.filter(contact => contact.name.toLowerCase().includes(normalizeFilter))
     return contactsList;
-  }, [filter, contacts]);
+  };
 
   return (
     <div className={styles.section}>
