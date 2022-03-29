@@ -13,7 +13,6 @@ const ContactForm = ({ onChange }) => {
   const [contact, setContact] = useState(initialState);
   const nameInputId = useRef(nanoid());
   const numberInputId = useRef(nanoid());
-  console.log('looogggg')
   const handleChange = event => {
     const { value, name } = event.target;
     setContact({
