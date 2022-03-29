@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef} from 'react';
+import { useState, useEffect, useRef, useCallback} from 'react';
 import { nanoid } from 'nanoid';
 
 import ContactFilter from './ContactFilter';
@@ -33,7 +33,7 @@ const Phonebook = () => {
 
   }, [contacts])
  
-  const addContact = newContact => {
+  const addContact = useCallback(newContact => {
     const newCont = {
       ...newContact,
       id: nanoid(),
@@ -44,14 +44,14 @@ const Phonebook = () => {
     }
 
     setContacts(state => [...state, newCont])
-  };
+  }, []);
   const deleteContact = contactId => {
     setContacts(state => state.filter(contact => contact.id !== contactId));
   };
-  const changeFilter = event => {
+  const changeFilter = useCallback(event => {
     const { value } = event.target;
     setFilter(value)
-  };
+  }, []);
   const filteredContacts = () => {
     const normalizeFilter = filter.toLowerCase();
     const contactsList = contacts.filter(contact => contact.name.toLowerCase().includes(normalizeFilter))
